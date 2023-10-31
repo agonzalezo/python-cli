@@ -1,5 +1,6 @@
 import click
 import json_handler
+import qr_handler
 
 @click.group()
 def cli():
@@ -92,6 +93,16 @@ def update(id, name, lastname):
     if not found:
         print(f'User with id {id} not found..')
         exit(99)
+
+@cli.command()
+@click.option('--data',prompt="Insert data",help='Data to be encoded in qr')
+@click.option('--qrtype',type=click.Choice(['ascii', 'image'], case_sensitive=False), default=('ascii'), help='Type of the qr code')
+def genqr(data, qrtype):
+    print(f'Creating the qr code type: {qrtype}, data: {data}')
+    if qrtype == 'ascii':
+        qr_handler.gen_ascii(data)
+    elif qrtype == 'image':
+        qr_handler.gen_image(data)
 
 if __name__ == '__main__':
     cli()

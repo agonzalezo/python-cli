@@ -1,5 +1,5 @@
 # Python CLI
-Python CLI is a Python command-line utility built using the Click library for educational purposes.
+Python CLI is a Python command-line utility built using the Click and qrcode library for educational purposes.
 
 ## Installation
 1. Clone this repository:
@@ -13,6 +13,13 @@ Python CLI is a Python command-line utility built using the Click library for ed
     ```bash
     pip install -r requirements.txt
 ## Usage
+- To generate an ascii QR
+    ```bash
+    # return an ascii QR pointing to netsys url
+    python src/cli.py genqr --data "https://netsys.uno/"
+    
+    # Generate a qr.png QR file pointing to netsys url
+    python src/cli.py genqr --qrtype image --data "https://netsys.uno/"
 - To list users
     ```bash
     python src/cli.py list # return all users in the json file
